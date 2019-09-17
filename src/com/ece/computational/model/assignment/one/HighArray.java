@@ -10,6 +10,8 @@ import java.util.HashMap;
  * Problem 2.6
  * ----------------------------------------------------------------------------------------------------------------
  * Write a noDups() method for the HighArray class of the highArray.java program (Listing 2.3).
+ *
+ * @author anubhav tomar (ID: 112268905)
  */
 public class HighArray {
 
@@ -95,6 +97,52 @@ public class HighArray {
         }
     }
 
+    public static void main(String[] args) {
+
+        int maxSize = 100;
+
+        HighArray highArray;
+        highArray = new HighArray(maxSize);
+        highArray.insert(77);
+        highArray.insert(99);
+        highArray.insert(44);
+        highArray.insert(55);
+        highArray.insert(99);
+        highArray.insert(22);
+        highArray.insert(88);
+        highArray.insert(11);
+        highArray.insert(00);
+        highArray.insert(66);
+        highArray.insert(22);
+        highArray.insert(33);
+        highArray.insert(63);
+
+        highArray.display();
+
+        int searchKey = 35;
+        if( highArray.find(searchKey) ) {
+            System.out.println("Found " + searchKey);
+        } else {
+            System.out.println("Can’t find " + searchKey);
+        }
+
+        highArray.delete(00);
+        highArray.delete(55);
+        highArray.delete(99);
+
+        highArray.display();
+
+        highArray.noDups();
+        System.out.println();
+        System.out.println("-------------------------------");
+        System.out.println("Array after removing duplicates");
+        highArray.display();
+        System.out.println();
+        System.out.println("Median -> " + highArray.getMedian());
+        highArray.display();
+        System.out.println("-------------------------------");
+    }
+
     private void deleteElementAtIndex(int index) {
 
         for (int k = index; k < numberOfElements; k++) {
@@ -159,51 +207,3 @@ public class HighArray {
     }
 }
 
-class HighArrayApp {
-
-    public static void main(String[] args) {
-
-        int maxSize = 100;
-
-        HighArray highArray;
-        highArray = new HighArray(maxSize);
-        highArray.insert(77);
-        highArray.insert(99);
-        highArray.insert(44);
-        highArray.insert(55);
-        highArray.insert(99);
-        highArray.insert(22);
-        highArray.insert(88);
-        highArray.insert(11);
-        highArray.insert(00);
-        highArray.insert(66);
-        highArray.insert(22);
-        highArray.insert(33);
-        highArray.insert(63);
-
-        highArray.display();
-
-        int searchKey = 35;
-        if( highArray.find(searchKey) ) {
-            System.out.println("Found " + searchKey);
-        } else {
-            System.out.println("Can’t find " + searchKey);
-        }
-
-        highArray.delete(00);
-        highArray.delete(55);
-        highArray.delete(99);
-
-        highArray.display();
-
-        highArray.noDups();
-        System.out.println();
-        System.out.println("-------------------------------");
-        System.out.println("Array after removing duplicates");
-        highArray.display();
-        System.out.println();
-        System.out.println("Median -> " + highArray.getMedian());
-        highArray.display();
-        System.out.println("-------------------------------");
-    }
-}

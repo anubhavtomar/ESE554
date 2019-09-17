@@ -5,6 +5,8 @@ package com.ece.computational.model.assignment.one;
  * ----------------------------------------------------------------------------------------------------------------
  * Modify the orderedArray.java program (Listing 2.4) so that the insert() and delete() routines, as well as find(),
  * use a binary search, as suggested in the text.
+ *
+ * @author anubhav tomar (ID: 112268905)
  */
 public class OrdArray {
 
@@ -81,34 +83,6 @@ public class OrdArray {
         System.out.println("");
     }
 
-    private int findCeilUsingBinarySearch(long searchKey) {
-
-        int leftIndex = 0;
-        int rightIndex = numberOfElements - 1;
-        int midIndex;
-        while(true) {
-            midIndex = (leftIndex + rightIndex) / 2;
-            if(searchKey <= arr[leftIndex]) {
-                return leftIndex;
-            }
-            if(arr[midIndex] > searchKey && midIndex - 1 >= leftIndex && arr[midIndex - 1] < searchKey ) {
-                return midIndex;
-            } else if (leftIndex > rightIndex) {
-                return numberOfElements;
-            } else {
-                if(arr[midIndex] < searchKey) {
-                    leftIndex = midIndex + 1;
-                }
-                else {
-                    rightIndex = midIndex - 1;
-                }
-            }
-        }
-    }
-}
-
-class OrderedApp {
-
     public static void main(String[] args) {
 
         int maxSize = 100;
@@ -140,5 +114,30 @@ class OrderedApp {
         ordArray.delete(99);
 
         ordArray.display();
+    }
+
+    private int findCeilUsingBinarySearch(long searchKey) {
+
+        int leftIndex = 0;
+        int rightIndex = numberOfElements - 1;
+        int midIndex;
+        while(true) {
+            midIndex = (leftIndex + rightIndex) / 2;
+            if(searchKey <= arr[leftIndex]) {
+                return leftIndex;
+            }
+            if(arr[midIndex] > searchKey && midIndex - 1 >= leftIndex && arr[midIndex - 1] < searchKey ) {
+                return midIndex;
+            } else if (leftIndex > rightIndex) {
+                return numberOfElements;
+            } else {
+                if(arr[midIndex] < searchKey) {
+                    leftIndex = midIndex + 1;
+                }
+                else {
+                    rightIndex = midIndex - 1;
+                }
+            }
+        }
     }
 }
